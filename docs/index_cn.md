@@ -1,8 +1,8 @@
 #开始
-欢迎进入gRPC的开发文档，gRPC初始由google开发,是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。
-本文档通过快速概述和一个简单的Hello World例子来向您介绍gRPC。你可以在本站发现更多的教程和参考文档-文档将会越来越丰富。
+欢迎进入gRPC的开发文档，gRPC初始由google开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。
+本文档通过快速概述和一个简单的Hello World例子来向您介绍gRPC。你可以在本站发现更详细的教程和参考文档-文档将会越来越丰富。
 ##快速开始
-要想直观地着手运行gRPC,可以从你选择的语言对应的快速开始入手，里面包含创建这个列子的安装指导、快速指南等内容。
+要想直观地着手运行gRPC，可以从你所选择的语言对应的快速开始入手，里面包含创建这个列子的安装指导、快速上手指南等更多内容。
 
  - [C++](https://github.com/grpc/grpc/tree/master/examples/cpp)
  - [Java](https://github.com/grpc/grpc-java/tree/master/examples)
@@ -14,19 +14,19 @@
  - [C#](https://github.com/grpc/grpc/tree/master/examples/csharp/helloworld)
  - [Objective-C](https://github.com/grpc/grpc/tree/master/examples/objective-c/helloworld)
  - [PHP](https://github.com/grpc/grpc/tree/master/examples/php)
-你可以从[这里]（https://github.com/grpc/grpc）找到gRPC的源码库。我们大多数例子都在源码库examples目录下。
+
+你可以从[这里](https://github.com/grpc/grpc)找到gRPC的源码库。我们大多数例子都在源码库examples目录下。
 ## gRPC是什么？
-在gRPC里*客户端*应用可以像本地对象一样直接调用另一台不同的机器上*服务端*应用的方法，使得您能够更容易地创建分布式应用和服务。与许多RPC系统类似，gRPC也是基于以下理念：定义一个*服务*，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个gRPC服务器来处理客户端调用。在客户端拥有一个*存根*能够像服务端一样的方法。
+在gRPC里*客户端*应用可以像调用本地对象一样直接调用另一台不同的机器上*服务端*应用的方法，使得您能够更容易地创建分布式应用和服务。与许多RPC系统类似，gRPC也是基于以下理念：定义一个*服务*，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个gRPC服务器来处理客户端调用。在客户端拥有一个*存根*能够像服务端一样的方法。
 ![图1][1]
-gRPC客户端和服务端可以在多种环境中运行和交互 - 从google内部的服务器到你自己的桌面，并且可以用任何gRPC[支持的语言](#quickstart)来编写。所以，你可以很容易地用Java创建一个gRPC服务端，用Go、Python、Ruby来创建客户端。此外，Google最新API将有gRPC版本的接口，使你很容易地将Google的功能集成到你的应用里。
+gRPC客户端和服务端可以在多种环境中运行和交互 - 从google内部的服务器到你自己的笔记本，并且可以用任何gRPC[支持的语言](#quickstart)来编写。所以，你可以很容易地用Java创建一个gRPC服务端，用Go、Python、Ruby来创建客户端。此外，Google最新API将有gRPC版本的接口，使你很容易地将Google的功能集成到你的应用里。
 
 ### 使用protocol buffers
 
-gRPC默认使用*protocol buffers*, Google成熟开源的结构数据序列化机制
- (当然也可以使用其他数据格式如JSON).正如你将在我们如下的例子里看到的，你用*proto files*创建gRPC服务，用protocol buffers 消息类型来定义方法参数和返回类型。你可以在 [Protocol Buffers文档](https://developers.google.com/protocol-buffers/docs/overview) 找到更多关于Protocol Buffers的资料。
+gRPC默认使用*protocol buffers*，这是Google开源的一套成熟的结构数据序列化机制（当然也可以使用其他数据格式如JSON）。正如你将在下方我们的例子里所看到的，你用*proto files*创建gRPC服务，用protocol buffers 消息类型来定义方法参数和返回类型。你可以在 [Protocol Buffers文档](https://developers.google.com/protocol-buffers/docs/overview)找到更多关于Protocol Buffers的资料。
 
 #### Protocol buffers 版本
-虽然protocol buffers对于开源用户来说已经存在了一段时间，我们的例子使用名叫proto3的一种新风格的protocol buffers,它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。当前针对Java和C++发布了beta版本，针对JavaNano（即Android Java）发布alpha版本，在[protocol buffers Github源码库里](https://github.com/google/protobuf/releases)有Ruby支持, 在[golang/protobuf Github源码库](https://github.com/golang/protobuf)里还有针对Go语言的生成器, 对更多语言的支持正在开发中. 你可以再 [proto3 语言指南](https://developers.google.com/protocol-buffers/docs/proto3)里找到更多内容, 在与当前默认版本的[发布说明](https://github.com/google/protobuf/releases)比较，看到两者的主要不同点。更多关于proto3的文档很快就会出现。虽然你*可以*使用proto2(当前默认的protocol buffers版本), 我们通常建议你在gRPC里使用proto3，因为这样你可以使用gRPC支持全部范围的的语言，并且能避免proto2客户端与proto3服务端交互时出现的兼容性问题，反之亦然。
+尽管protocol buffers对于开源用户来说已经存在了一段时间，我们的例子内使用的却一种名叫proto3的新风格的protocol buffers，它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。当前针对Java和C++发布了beta版本，针对JavaNano（即Android Java）发布alpha版本，在[protocol buffers Github源码库里](https://github.com/google/protobuf/releases)有Ruby支持， 在[golang/protobuf Github源码库](https://github.com/golang/protobuf)里还有针对Go语言的生成器, 对更多语言的支持正在开发中。 你可以在 [proto3 语言指南](https://developers.google.com/protocol-buffers/docs/proto3)里找到更多内容， 在与当前默认版本的[发布说明](https://github.com/google/protobuf/releases)比较，看到两者的主要不同点。更多关于proto3的文档很快就会出现。虽然你*可以*使用proto2(当前默认的protocol buffers版本)， 我们通常建议你在gRPC里使用proto3，因为这样你可以使用gRPC支持全部范围的的语言，并且能避免proto2客户端与proto3服务端交互时出现的兼容性问题，反之亦然。
 ## 你好gRPC!
 现在你已经对gRPC有所了解，了解其工作机制最见简单的方法是看一个简单的例子。我们的Hello World将带领你创建一个简单的客户端-服务端应用，向你展示：
 
@@ -36,8 +36,8 @@ gRPC默认使用*protocol buffers*, Google成熟开源的结构数据序列化�
  
 这个例子完整的代码在我们GitHub源码库的`examples`目录下。
 我们可以使用Git版本系统来进行源码管理，但是除了如何安装和运行一些Git命令外，你没必要知道其他关于Git的任何事情。
-注意我们例子的服务端代码并不是在所有gRPC支持的语言都有，比如PHP和Objective-C仅支持创建客户端。
-这是一个介绍性的例子，而不是一个针对于特定语言的复杂教程。你可以在本站找到更有深度的教程，所有gRPC支持的语言的参考文档很快就会出现。
+需要注意的是，并不是所有gRPC支持的语言都可以编写我们例子的服务端代码，比如PHP和Objective-C仅支持创建客户端。
+比起一个针对于特定语言的复杂教程这更像是一个介绍性的例子。你可以在本站找到更有深度的教程，gRPC支持的语言的参考文档很快就会全部开放。
 ### 准备
 本节解释了如何在你本机上准备好例子代码的运行环境。如果你只是想读一下例子，你可以直接到[下一步](#servicedef)。
 
