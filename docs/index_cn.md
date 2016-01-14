@@ -41,14 +41,14 @@ gRPC 默认使用 *protocol buffers*，这是 Google 开源的一套成熟的结
 ### 准备
 本节解释了如何在你本机上准备好例子代码的运行环境。如果你只是想读一下例子，你可以直接到[下一步](#servicedef)。
 
-#### 安装Git
+#### 安装 Git
 
 你可以从[http://git-scm.com/download](http://git-scm.com/download)下载和安装 Git。一旦安装好 Git 后你应该能访问 git 命令行工具。你需要的主要命令如下：
 
 - git clone ... : 从远程代码库克隆一份到本机。
 - git checkout ... : 检出一个特殊分支或一个标签版本的代码来改进
 
-#### 安装gRPC
+#### 安装 gRPC
 针对你选择的语言构建和安装 gRPC 插件和相关工具，可以参照[快速开始](#quickstart)。 Java gRPC 除了 JDK 外不需要其他工具。
 #### 获得源码
 
