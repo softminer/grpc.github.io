@@ -282,11 +282,11 @@ HTTP2 规范当使用 TLS 时强制使用 TLS 1.2 及以上的版本，并且在
 
 
 
-## 附录 A - Protobuf上的GRPC 
+## 附录 A - Protobuf 上的 GRPC
 
 
 
-用protobuf定义的服务接口可以通过protoc的代码生成扩展简单地映射成GRPC，以下定义了所用的映射：
+用 protobuf 定义的服务接口可以通过 protoc 的代码生成扩展简单地映射成 GRPC ，以下定义了所用的映射：
 
 
 
@@ -299,7 +299,7 @@ HTTP2 规范当使用 TLS 时强制使用 TLS 1.2 及以上的版本，并且在
 
 * **服务名** → ?( {_proto 包名_} "." ) {_服务名_}
 
-* **消息类型** → {_全路径proto消息名_}
+* **消息类型** → {_全路径 proto 消息名_}
 
 * **内容类型** → "application/grpc+proto"
 
