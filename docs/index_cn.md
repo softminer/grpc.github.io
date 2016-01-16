@@ -26,7 +26,7 @@ gRPC 客户端和服务端可以在多种环境中运行和交互 - 从 google �
 gRPC 默认使用 *protocol buffers*，这是 Google 开源的一套成熟的结构数据序列化机制（当然也可以使用其他数据格式如 JSON）。正如你将在下方我们的例子里所看到的，你用 *proto files* 创建 gRPC 服务，用 protocol buffers 消息类型来定义方法参数和返回类型。你可以在 [Protocol Buffers 文档](https://developers.google.com/protocol-buffers/docs/overview)找到更多关于 Protocol Buffers 的资料。
 
 #### Protocol buffers 版本
-尽管 protocol buffers 对于开源用户来说已经存在了一段时间，我们的例子内使用的却一种名叫 proto3 的新风格的 protocol buffers，它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。当前针对 Java 和 C++ 发布了 beta 版本，针对 JavaNano（即 Android Java）发布 alpha 版本，在[protocol buffers Github 源码库里](https://github.com/google/protobuf/releases)有 Ruby 支持， 在[golang/protobuf Github 源码库](https://github.com/golang/protobuf)里还有针对 Go 语言的生成器, 对更多语言的支持正在开发中。 你可以在 [proto3 语言指南](https://developers.google.com/protocol-buffers/docs/proto3)里找到更多内容， 在与当前默认版本的[发布说明](https://github.com/google/protobuf/releases)比较，看到两者的主要不同点。更多关于 proto3 的文档很快就会出现。虽然你*可以*使用 proto2 (当前默认的 protocol buffers 版本)， 我们通常建议你在 gRPC 里使用 proto3，因为这样你可以使用 gRPC 支持全部范围的的语言，并且能避免 proto2 客户端与 proto3 服务端交互时出现的兼容性问题，反之亦然。
+尽管 protocol buffers 对于开源用户来说已经存在了一段时间，我们的例子内使用的却一种名叫 proto3 的新风格的 protocol buffers，它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。当前针对 Java 和 C++ 发布了 beta 版本，针对 JavaNano（即 Android Java）发布 alpha 版本，在[protocol buffers Github 源码库里](https://github.com/google/protobuf/releases)有 Ruby 支持， 在[golang/protobuf Github 源码库](https://github.com/golang/protobuf)里还有针对 Go 语言的生成器， 对更多语言的支持正在开发中。 你可以在 [proto3 语言指南](https://developers.google.com/protocol-buffers/docs/proto3)里找到更多内容， 在与当前默认版本的[发布说明](https://github.com/google/protobuf/releases)比较，看到两者的主要不同点。更多关于 proto3 的文档很快就会出现。虽然你*可以*使用 proto2 (当前默认的 protocol buffers 版本)， 我们通常建议你在 gRPC 里使用 proto3，因为这样你可以使用 gRPC 支持全部范围的的语言，并且能避免 proto2 客户端与 proto3 服务端交互时出现的兼容性问题，反之亦然。
 ## 你好 gRPC!
 现在你已经对 gRPC 有所了解，了解其工作机制最见简单的方法是看一个简单的例子。我们的 Hello World 将带领你创建一个简单的客户端-服务端应用，向你展示：
 
@@ -142,10 +142,10 @@ $ npm install
 例子代码在 GitHub 源码库的 `examples` 目录。你可以运行如下命令克隆源码到本地：
 
 `
-$ git clone https://github.com/grpc/grpc.git
+$ git clone https://github.com/grpc/grpc。git
 `
 
-Open `Greeter.sln` from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.
+Open `Greeter。sln` from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.
   
  - Objective-C
  
