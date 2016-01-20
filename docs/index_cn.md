@@ -160,6 +160,7 @@ $ git submodule update --init
 切换当前目录到 `examples/objective-c/helloworld` 。
 
 - PHP
+
 例子代码在 GitHub 源码库的 `examples` 目录。你可以运行如下命令克隆源码到本地：
 
 `$ git clone https：//github.com/grpc/grpc.git`
@@ -207,7 +208,8 @@ message HelloReply {
 
 
 - Java
-这个例子的构建系统也是 Java gRPC 本身构建的一部分 —— 为了简单起见，我们推荐使用我们事先生成的例子代码。你可以参考 [README](https：//github.com/grpc/grpc——java/blob/master/README.md) 来看一下如何从你自己的 .proto 文件生成代码。
+
+	这个例子的构建系统也是 Java gRPC 本身构建的一部分 —— 为了简单起见，我们推荐使用我们事先生成的例子代码。你可以参考 [README](https：//github.com/grpc/grpc——java/blob/master/README.md) 来看一下如何从你自己的 .proto 文件生成代码。
 
 	这个例子事先生成的代码在 [src/generated/main](https：//github.com/grpc/grpc——java/tree/master/examples/src/generated/main)下。
 以下类包含所有我们需要创建这个例子所有的代码：
@@ -704,6 +706,7 @@ func main() {
 	在 Ruby 里，我们可以在一个方法里调用从 .proto 文件里生成的存根类。
 
 - Node.js
+
 	`var client = new hello_proto.Greeter('localhost：50051');`
 	
 	在 Node.js ，我们可以在一步调用 `Greeter` 存根构造器。
@@ -717,7 +720,8 @@ var client = Greeter.NewClient(channel);
 	```
   
 - Objective-C
-在 Objective-C 里，我们可以用生成的 `HLWGreeter` 类指定的初始化方法完成，这个方法需要用`NSString *` 类型表示的服务器和端口作为参数。
+
+	在 Objective-C 里，我们可以用生成的 `HLWGreeter` 类指定的初始化方法完成，这个方法需要用`NSString *` 类型表示的服务器和端口作为参数。
 
 	```
 #import <GRPCClient/GRPCCall+Tests.h>
@@ -777,8 +781,7 @@ HelloReply reply = blockingStub.sayHello(req);
 
 	你可以在 [greeter_client.cc](https：//github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_client.cc) 里查看完整的客户端代码。
 
-  
- - Python
+- Python
  
 	```
 response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'), _TIMEOUT_SECONDS)
