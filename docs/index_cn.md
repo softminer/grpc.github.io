@@ -31,14 +31,14 @@ gRPC 默认使用 *protocol buffers*，这是 Google 开源的一套成熟的结
 #### Protocol buffers 版本
 尽管 protocol buffers 对于开源用户来说已经存在了一段时间，例子内使用的却一种名叫 proto3 的新风格的 protocol buffers，它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。当前针对 Java 和 C++ 发布了 beta 版本，针对 JavaNano（即 Android Java）发布 alpha 版本，在[protocol buffers Github 源码库里](https：//github.com/google/protobuf/releases)有 Ruby 支持， 在[golang/protobuf Github 源码库](https：//github.com/golang/protobuf)里还有针对 Go 语言的生成器， 对更多语言的支持正在开发中。 你可以在 [proto3 语言指南](https：//developers.google.com/protocol-buffers/docs/proto3)里找到更多内容， 在与当前默认版本的[发布说明](https：//github.com/google/protobuf/releases)比较，看到两者的主要不同点。更多关于 proto3 的文档很快就会出现。虽然你*可以*使用 proto2 (当前默认的 protocol buffers 版本)， 我们通常建议你在 gRPC 里使用 proto3，因为这样你可以使用 gRPC 支持全部范围的的语言，并且能避免 proto2 客户端与 proto3 服务端交互时出现的兼容性问题，反之亦然。
 ## 你好 gRPC!
-现在你已经对 gRPC 有所了解，了解其工作机制最简单的方法是看一个简单的例子。 Hello World 将带领你创建一个简单的客户端-服务端应用，向你展示：
+现在你已经对 gRPC 有所了解，了解其工作机制最简单的方法是看一个简单的例子。 Hello World 将带领你创建一个简单的客户端——服务端应用，向你展示：
 
  - 通过一个 protocol buffers 模式，定义一个简单的带有 Hello World 方法的 RPC 服务。
  - 用你最喜欢的语言(如果可用的话)来创建一个实现了这个接口的服务端。
  - 用你最喜欢的(或者其他你愿意的)语言来访问你的服务端。
  
 这个例子完整的代码在我们 GitHub 源码库的 `examples` 目录下。
-我们可以使用 Git 版本系统来进行源码管理，但是除了如何安装和运行一些 Git 命令外，你没必要知道其他关于 Git 的任何事情。
+我们使用 Git 版本系统来进行源码管理，但是除了如何安装和运行一些 Git 命令外，你没必要知道其他关于 Git 的任何事情。
 需要注意的是，并不是所有 gRPC 支持的语言都可以编写我们例子的服务端代码，比如 PHP 和 Objective-C 仅支持创建客户端。
 比起针对于特定语言的复杂教程，这更像是一个介绍性的例子。你可以在本站找到更有深度的教程，gRPC 支持的语言的参考文档很快就会全部开放。
 ### 准备
@@ -171,7 +171,7 @@ $ git submodule update --init
 创建我们例子的第一步是定义一个*服务*：一个 RPC 服务通过参数和返回类型来指定可以远程调用的方法。就像你在 [概览](#protocolbuffers) 里所看到的， gRPC 通过 [protocol
 buffers](https：//developers.google.com/protocol-buffers/docs/overview) 来实现。
 我们使用 protocol buffers 接口定义语言来定义服务方法，用 protocol buffer 来定义参数和返回类型。客户端和服务端均使用服务定义生成的接口代码。
-这里有我们服务定义的例子，在 [helloworld.proto](https：//github.com/grpc/grpc-java/tree/master/examples/src/main/proto) 里用 protocol buffers IDL 定义的。`Greeter`    服务 有一个方法 `SayHello` ，可以让服务端从远程客户端接收一个包含用户名的 `HelloRequest` 消息后，在一个 `HelloReply` 里发送回一个 `Greeter `。这是你可以在 gRPC 里指定的最简单的 RPC - 你可以在教程里找到针对你选择的语言更多类型的例子。
+这里有我们服务定义的例子，在 [helloworld.proto](https：//github.com/grpc/grpc-java/tree/master/examples/src/main/proto) 里用 protocol buffers IDL 定义的。`Greeter` 服务有一个方法 `SayHello` ，可以让服务端从远程客户端接收一个包含用户名的 `HelloRequest` 消息后，在一个 `HelloReply` 里发送回一个 `Greeter `。这是你可以在 gRPC 里指定的最简单的 RPC - 你可以在教程里找到针对你选择的语言更多类型的例子。
 
 
 ```proto
@@ -207,9 +207,9 @@ message HelloReply {
 
 
 - Java
-这个例子的构建系统也是 Java gRPC 本身构建的一部分 - 为了简单起见，我们推荐使用我们事先生成的例子代码。你可以参考 [README](https：//github.com/grpc/grpc-java/blob/master/README.md) 来看一下如何从你自己的 .proto 文件生成代码。
+这个例子的构建系统也是 Java gRPC 本身构建的一部分 —— 为了简单起见，我们推荐使用我们事先生成的例子代码。你可以参考 [README](https：//github.com/grpc/grpc——java/blob/master/README.md) 来看一下如何从你自己的 .proto 文件生成代码。
 
-	这个例子事先生成的代码在 [src/generated/main](https：//github.com/grpc/grpc-java/tree/master/examples/src/generated/main)下。
+	这个例子事先生成的代码在 [src/generated/main](https：//github.com/grpc/grpc——java/tree/master/examples/src/generated/main)下。
 以下类包含所有我们需要创建这个例子所有的代码：
 
 	- HelloRequest.java， HelloResponse.java和其他文件包含所有 protocol buffer 用来填充、序列化和提取 `HelloRequest` 和 `HelloReply` 消息类型的代码。
@@ -308,12 +308,12 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
 - C#
 
 	- 为了生成 Windows 上的代码，我们使用来自 `Google.Protobuf`  NuGet 包里的  `protoc.exe` 和来自 `Grpc.Tools`  NuGet 包里的 `Grpc.Tools` ，这两个文件都在 `tools` 目录下。
-	一般你需要自己把 `Grpc.Tools` 包添加到解决方案，但在这个教程里，这一步已经为你做好了。应该在 `examples/csharp/helloworld` 下执行以下命令：
+	一般你需要自己把 `Grpc.Tools` 包添加到解决方案，但在这个教程里，这一步已经为你做好了。你应该在 `examples/csharp/helloworld` 下执行以下命令：
 
 		```
   > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/helloworld.proto
 		```
-	- 在 Linux 或 OS X ，我们依赖通过 Linuxbrew 或者 Homebrew 安装的 `protoc` 和 `grpc_csharp_plugin` 。从 route_guide 运行这个命令：
+	- 在 Linux 或 OS X ，我们依赖通过 Linuxbrew 或者 Homebrew 安装的 `protoc` 和 `grpc_csharp_plugin` 。请在 route_guide 目录下运行这个命令：
 
 
 		```
@@ -356,7 +356,7 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
   
 ### 写一个服务器
 
-现在让我们写点代码！首先我们将创建一个服务应用来实现服务(你会记起来，我们可以是使用除了Objective-C and PHP 外的其他所有语言来实现)。在本节，我们不打算对如何创建一个服务端进行更深入地探讨 - 更详细的信息可以在你选择语言对应的教程里找到。
+现在让我们写点代码！首先我们将创建一个服务应用来实现服务(你会记起来，我们可以是使用除了Objective-C and PHP 外的其他所有语言来实现)。在本节，我们不打算对如何创建一个服务端进行更深入地探讨 —— 更详细的信息可以在你选择语言对应的教程里找到。
 
 #### 服务实现
 - Java
@@ -378,9 +378,9 @@ public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserv
 	- `HelloRequest`，请求。
 	- `StreamObserver<HelloReply>`： 应答观察者，一个特殊的接口，服务器用应答来调用它。
 
-	为了返回给客户端应答，需要完成以下调用：
+	为了返回给客户端应答并且完成调用：
 
-	1. 用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
+	1. 用我们的激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
 	2. 将 `HelloReply` 返回给客户端，然后表明我们已经完成了对 RPC 的处理。
 
 
@@ -407,9 +407,9 @@ class GreeterServiceImpl final ： public Greeter：：Service {
 	- `HelloRequest` ： 请求。
 	- `HelloReply` ：应答。
 
-	为了返回给客户端应答，需要完成以下调用：
+	为了返回给客户端应答并且完成调用：
 
-	1. 用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
+	1. 用我们的激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
 	2. 将 `Status::OK` 返回给客户端，表明我们已经完成了对 RPC 的处理。
   
 
@@ -424,9 +424,9 @@ class GreeterServiceImpl final ： public Greeter：：Service {
   def SayHello(self, request, context)：
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
 	```
-	为了返回给客户端应答，需要完成以下调用：
+	为了返回给客户端应答并且完成调用：
 
-	1.  用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
+	1.  用我们的激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
 	2.  将 `HelloReply` 返回给客户端。
 
 - Go
@@ -442,9 +442,9 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 	return &pb.HelloReply{Message： "Hello " + in.Name}, nil
 }	
 ```
-	为了返回给客户端应答，需要完成以下调用：
+	为了返回给客户端应答并且完成调用：
 
-	1. 用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
+	1. 用我们的激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
 	2.	将 `HelloReply` 返回给客户端。
 
 - Ruby
@@ -459,7 +459,7 @@ class GreeterServer < Helloworld：：Greeter：：Service
     Helloworld：：HelloReply.new(message： "Hello #{hello_req.name}")
   end
 	```
-为了返回给客户端应答，需要完成以下调用：我们用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象，然后返回它。
+为了返回给客户端应答并且完成调用：我们用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象，然后返回它。
 
 - Node.js
 
@@ -489,7 +489,7 @@ class GreeterImpl ： Greeter.IGreeter
 	```
 为了返回给客户端应答并完成以下调用：
 
-	1. 用激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
+	1. 用我们的激动人心的消息构建并填充一个在我们接口定义的 `HelloReply` 应答对象。
 	2. 将 `HelloReply` 返回给客户端。
 
 #### 服务端实现
@@ -497,7 +497,7 @@ class GreeterImpl ： Greeter.IGreeter
 
 - Java
 
-	[HelloWorldServer.java](https：//github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java) 提供了 Java 的例子。
+	[HelloWorldServer.java](https：//github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java) 提供了以下代码作为 Java 的例子。
 
 	```
 /* The port on which the server should run */
@@ -523,7 +523,7 @@ private void start() throws Exception {
 
 - C++
 
-	[greeter_server.cc](https：//github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc)也提供了 C++ 的例子。
+	[greeter_server.cc](https：//github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc) 提供了以下代码作为 C++ 的例子。
 
 	```
 void RunServer() {
@@ -540,7 +540,7 @@ void RunServer() {
   
 - Python
   
-	[greeter_server.py](https：//github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py)也提供了 Python 的例子。
+	[greeter_server.py](https：//github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py) 提供了以下代码作为 Python 的例子。
 
 	```
  server = helloworld_pb2.beta_create_Greeter_server(Greeter())
@@ -555,7 +555,7 @@ void RunServer() {
 
 - Go
 
-	[greeter_server/main.go](https：//github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go)也提供了 Go 的例子。
+	[greeter_server/main.go](https：//github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go) 提供了以下代码作为 Go 的例子。
 
 	```
 const (
@@ -576,7 +576,7 @@ func main() {
   
 - Ruby
 
-	[greeter_server.rb](https：//github.com/grpc/grpc/blob/master/examples/ruby/greeter_server.rb)也提供了 Ruby 的例子。
+	[greeter_server.rb](https：//github.com/grpc/grpc/blob/master/examples/ruby/greeter_server.rb) 提供了以下代码作为 Ruby 的例子。
 
 	```
 def main
@@ -590,7 +590,7 @@ end
   
 - Node.js
 
-	[greeter_server.js](https：//github.com/grpc/grpc/blob/maser/examples/node/greeter_server.js)也提供了 Ruby 的例子。
+	[greeter_server.js](https：//github.com/grpc/grpc/blob/maser/examples/node/greeter_server.js) 提供了以下代码作为 Ruby 的例子。
 
 	```
 function main() {
@@ -607,7 +607,7 @@ function main() {
   
 - C#
 
-	[GreeterServer/Program.cs](https：//github.com/grpc/grpc/blob/master/examples/csharp/helloworld/GreeterServer/Program.cs)也提供了 C# 的例子。
+	[GreeterServer/Program.cs](https：//github.com/grpc/grpc/blob/master/examples/csharp/helloworld/GreeterServer/Program.cs) 提供了以下代码作为 C# 的例子。
 
 	```
 Server server = new Server
@@ -644,7 +644,7 @@ public HelloWorldClient(String host, int port) {
 }
 	```
 
-	在这个例子里，我们创建了一个阻塞的存根。这意味着 RPC 调用要等待服务器应答，将会返回一个应答或抛出一个异常。 gRPC Java 还可以有其他种类的存根，可以向服务器发出非阻塞的调用，这时应答是异步返回的。
+	在这个例子里，我们创建了一个阻塞的存根。这意味着 RPC 调用要等待服务器应答，将会返回一个应答或抛出一个异常。 gRPC Java 还可以有其他种类的存根，可以向服务器发出非阻塞的调用，这种情况下应答是异步返回的。
 
 - C++
 
@@ -746,8 +746,7 @@ $client = new helloworld\GreeterClient(
 现在我们可以联系服务并获得一个 greeting ：
 
 1. 我们创建并填充一个 `HelloRequest` 发送给服务。
-2. 我们用请求调用存根的 `SayHello()`，如果 RPC 成功，会得到一个填充的 `HelloReply` ，从这里我们可以获得 greeting。
-2. We call the stub's `SayHello()` RPC with our request and get a populated `HelloReply` if the RPC is successful, from which we can get our greeting.
+2. 我们用请求调用存根的 `SayHello()`，如果 RPC 成功，会得到一个填充的 `HelloReply` ，从其中我们可以获得 greeting。
 
 
 - Java
@@ -926,7 +925,7 @@ $ ./build/install/grpc-examples/bin/hello-world-server
 	你可以在 `examples` 目录下构建并运行客户端。假如你还没有构建客户端，可以使用如下命令：
 
 	`
-$ ../gradlew -PskipCodegen=true installDist
+	$ ../gradlew -PskipCodegen=true installDist
 	`
 
 	然后运行客户端：
